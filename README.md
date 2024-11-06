@@ -55,27 +55,3 @@ Baixar ou clonar o repositório.
 ```
 git clone https://github.com/RafaAnjos25/lista_de_tarefas.git
 ```
-
-Compilar o código com o comando:
-bash
-Copiar código
-javac -d bin src/*.java
-Executar a aplicação com o comando:
-bash
-Copiar código
-java -cp bin Main
-
-Ao iniciar o programa, a interface gráfica será carregada, onde você poderá adicionar, editar, excluir e visualizar suas tarefas.
-Exemplo de Uso
-Adicionar uma Tarefa:
-
-O usuário clica no botão "Adicionar", preenche a descrição da tarefa e define a data/hora.
-A tarefa será salva na lista de tarefas do dia.
-Notificação:
-
-Quando o horário da tarefa chega, o sistema envia uma notificação ao usuário.
-As notificações podem ser simples alertas com a descrição da tarefa ou pop-ups na tela.
-Visualizar e Editar:
-
-O usuário pode ver a lista de tarefas e editar ou excluir qualquer tarefa pendente.
-
