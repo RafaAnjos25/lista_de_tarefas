@@ -23,26 +23,39 @@ public class SwingExample {
         panel.setLayout(null);
 
         // Titulo
-        JLabel userLabel = new JLabel("Clique no botão:");
-        userLabel.setBounds(10, 20, 150, 25);
+        JLabel userLabel = new JLabel("Tarefa 1°");
+        userLabel.setBounds(150, 25, 150, 25);
         panel.add(userLabel);
 
         // Criação do campo de texto
         JTextField userText = new JTextField(20);
-        userText.setBounds(150, 20, 200, 25);
+        userText.setBounds(200, 20, 100, 25);
         panel.add(userText);
 
         // Criação do botão
-        JButton loginButton = new JButton("Criar Tarefa");
-        loginButton.setBounds(150, 60, 150, 25);
-        panel.add(loginButton);
+        JButton make_task = new JButton("Criar Tarefa");
+        make_task.setBounds(10, 20, 150, 25);
+        panel.add(make_task);
+
+        // Criação do botão
+        JButton view_task = new JButton("Criar Tarefa");
+        view_task.setBounds(20, 50, 350, 50);
+        panel.add(view_task);
 
         // Adicionando ação ao botão
-        loginButton.addActionListener(new ActionListener() {
+        make_task.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 userText.getText();
             }
         });
+
+        view_task.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                userText.getText();
+            }
+        });
+
     }
 }
