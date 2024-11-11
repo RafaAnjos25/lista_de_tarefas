@@ -22,7 +22,7 @@ public class SwingExample {
     private static void placeComponents(JPanel panel) {
         panel.setLayout(null);
 
-        // Criação do rótulo (label)
+        // Titulo
         JLabel userLabel = new JLabel("Clique no botão:");
         userLabel.setBounds(10, 20, 150, 25);
         panel.add(userLabel);
@@ -33,7 +33,7 @@ public class SwingExample {
         panel.add(userText);
 
         // Criação do botão
-        JButton loginButton = new JButton("Clique Aqui");
+        JButton loginButton = new JButton("Criar Tarefa");
         loginButton.setBounds(150, 60, 150, 25);
         panel.add(loginButton);
 
@@ -41,7 +41,7 @@ public class SwingExample {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                userText.setText("Eduardo Tecelão");
+                userText.getText();
             }
         });
     }

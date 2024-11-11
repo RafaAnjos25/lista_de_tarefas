@@ -55,3 +55,7 @@ Baixar ou clonar o repositório.
 ```
 git clone https://github.com/RafaAnjos25/lista_de_tarefas.git
 ```
+
+## Prototipo
+
+![Prototipo](/img/img.png)
