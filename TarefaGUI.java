@@ -33,7 +33,6 @@ public class TarefaGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 adicionarTarefa("Nova Tarefa");
-                adicionarTarefa.setFont(new Font("Arial", Font.BOLD, 18)); // Ajusta a fonte e o tamanho do texto no botão
             }
         });
 
