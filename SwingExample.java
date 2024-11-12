@@ -2,22 +2,51 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import package "CriarTarefa";
 
 public class SwingExample {
     public static void main(String[] args) {
-        // Criação da janela principal
-        JFrame frame = new JFrame("Exemplo de Interface Gráfica");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 200);
-        
-        // Criação de um painel
-        JPanel panel = new JPanel();
-        frame.add(panel);
-        placeComponents(panel);
+                // Instância da classe CriarTarefa
+                CriarTarefa criarTarefa = new CriarTarefa();
 
-        // Tornar a janela visível
-        frame.setVisible(true);
-    }
+                // Configuração da janela principal
+                JFrame frame = new JFrame("Exemplo de Interface Gráfica");
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setSize(400, 300);
+        
+                // Painel principal
+                JPanel panel = new JPanel();
+                panel.setLayout(null);
+                frame.add(panel);
+        
+                // Campo de entrada para a tarefa
+                JTextField tarefaText = new JTextField(20);
+                tarefaText.setBounds(150, 20, 200, 25);
+                panel.add(tarefaText);
+        
+                // Área de exibição das tarefas
+                JTextArea tarefaList = new JTextArea();
+                tarefaList.setBounds(10, 100, 350, 120);
+                tarefaList.setEditable(false);
+                panel.add(tarefaList);
+        
+                // Botão para adicionar tarefa
+                JButton addButton = new JButton("Adicionar Tarefa");
+                addButton.setBounds(150, 60, 150, 25);
+                panel.add(addButton);
+        
+                // Chama o método adicionarTarefa da classe CriarTarefa quando o botão é clicado
+                addButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        criarTarefa.adicionarTarefa(tarefaText, tarefaList); // Chama o método adicionarTarefa
+                    }
+                });
+        
+                // Torna a janela visível
+                frame.setVisible(true);
+            }
+    
 
     private static void placeComponents(JPanel panel) {
         panel.setLayout(null);
