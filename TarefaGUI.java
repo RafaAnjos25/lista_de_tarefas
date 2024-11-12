@@ -20,6 +20,9 @@ public class TarefaGUI {
 
         // Botão "Criar Tarefa"
         JButton criarTarefaButton = new JButton("Criar Tarefa");
+
+        criarTarefaButton.setPreferredSize(new Dimension(200, 40)); // Define o tamanho desejado
+
         criarTarefaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -40,13 +43,18 @@ public class TarefaGUI {
 
     // Método para adicionar uma nova tarefa
     private void adicionarTarefa(String descricao) {
-        JPanel panel = new JPanel();
+        RoundedPanel panel = new RoundedPanel(15);  // 15 is the corner radius
+        panel.setBackground(Color.WHITE);  // Set the desired background color
         panel.setLayout(new BorderLayout());
-        panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         panel.setPreferredSize(new Dimension(350, 50));
 
+        // Cria o rótulo com a descrição da tarefa e centraliza o texto
+        JLabel label = new JLabel(descricao, SwingConstants.CENTER); // Centraliza horizontalmente
+        label.setHorizontalAlignment(SwingConstants.CENTER); // Centraliza o texto horizontalmente
+        label.setVerticalAlignment(SwingConstants.CENTER);   // Centraliza o texto verticalmente
+        label.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Adiciona uma margem
+
         // Rótulo com a descrição da tarefa
-        JLabel label = new JLabel(descricao);
         panel.add(label, BorderLayout.CENTER);
 
         // Botão de editar
