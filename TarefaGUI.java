@@ -59,6 +59,7 @@ public class TarefaGUI {
 
         // Rótulo com a descrição da tarefa, centralizado
         JLabel label = new JLabel(descricao, SwingConstants.CENTER);
+        label.setFont(new Font("Arial", Font.PLAIN, 15)); // Ajusta a fonte, estilo e tamanho do texto do título
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setVerticalAlignment(SwingConstants.CENTER);
         
@@ -103,6 +104,7 @@ public class TarefaGUI {
 
         // Adiciona o painel da tarefa ao painel principal de tarefas
         tarefaPanel.add(panel);
+        tarefaPanel.add(Box.createVerticalStrut(10)); // Adiciona um espaço vertical entre as tarefas
         tarefaPanel.revalidate();
         tarefaPanel.repaint();
 
