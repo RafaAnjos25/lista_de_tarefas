@@ -30,7 +30,7 @@ Este é um projeto de uma aplicação em Java desenvolvida para gerenciar tarefa
 + Date and Time API (java.time)
  Para manipulação de datas e horas de forma eficiente e segura.
 
-**Estrutura do Projeto**
+**Estrutura do Projeto**a
 ```
 TarefaApp/
 ├── src/
