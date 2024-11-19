@@ -28,11 +28,11 @@ public class TarefaGUI {
         criarTarefaButton.setFont(new Font("Arial", Font.BOLD, 18)); // Ajusta a fonte e o tamanho do texto no botão
         topPanel.add(criarTarefaButton);
 
-        // Adiciona ação ao botão "Criar Tarefa"
+        // Adiciona ação ao botão "Criar Tarefa" para abrir a janela de criação
         criarTarefaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                adicionarTarefa("Nova Tarefa");
+                abrirJanelaEdicao("Nova Tarefa", "", "Não iniciado", true, null, null, null);
             }
         });
 
@@ -48,22 +48,41 @@ public class TarefaGUI {
     }
 
     // Método para adicionar uma nova tarefa
-    private void adicionarTarefa(String descricao) {
+    private void adicionarTarefa(String titulo, String descricao, String status) {
         // Cria o painel arredondado para a tarefa
         RoundedPanel panel = new RoundedPanel(15); // Define o raio dos cantos
         panel.setBackground(Color.WHITE);
-        panel.setPreferredSize(new Dimension(700, 50)); // Tamanho exato da caixa de tarefa
-        panel.setMaximumSize(new Dimension(700, 50));   // Limita o tamanho máximo da caixa
+        panel.setPreferredSize(new Dimension(700, 80)); // Tamanho exato da caixa de tarefa
+        panel.setMaximumSize(new Dimension(700, 80));   // Limita o tamanho máximo da caixa
         panel.setLayout(new BorderLayout());
         panel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10)); // Margem interna da caixa
 
-        // Rótulo com a descrição da tarefa, centralizado
-        JLabel label = new JLabel(descricao, SwingConstants.CENTER);
-        label.setFont(new Font("Arial", Font.PLAIN, 15)); // Ajusta a fonte, estilo e tamanho do texto do título
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-        label.setVerticalAlignment(SwingConstants.CENTER);
-        
-        panel.add(label, BorderLayout.CENTER);
+        // Painel interno para organizar título, descrição e status centralizados
+        JPanel contentPanel = new JPanel();
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+        contentPanel.setOpaque(false);
+        contentPanel.setAlignmentX(Component.CENTER_ALIGNMENT); // Centraliza horizontalmente
+
+        // Rótulo com o título da tarefa
+        JLabel tituloLabel = new JLabel(titulo);
+        tituloLabel.setFont(new Font("Arial", Font.BOLD, 15)); // Título com fonte maior
+        tituloLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Centraliza horizontalmente
+        contentPanel.add(tituloLabel);
+
+        // Rótulo com a descrição da tarefa
+        JLabel descricaoLabel = new JLabel(descricao);
+        descricaoLabel.setFont(new Font("Arial", Font.PLAIN, 12)); // Descrição com fonte menor
+        descricaoLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Centraliza horizontalmente
+        contentPanel.add(descricaoLabel);
+
+        // Rótulo com o status da tarefa
+        JLabel statusLabel = new JLabel(status);
+        statusLabel.setFont(new Font("Arial", Font.BOLD, 12)); // Status em negrito
+        statusLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Centraliza horizontalmente
+        contentPanel.add(statusLabel);
+
+        // Adiciona o painel de conteúdo ao painel principal
+        panel.add(contentPanel, BorderLayout.CENTER);
 
         // Botão de editar
         JButton editarButton = new JButton("✎");
@@ -72,10 +91,7 @@ public class TarefaGUI {
         editarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String novaDescricao = JOptionPane.showInputDialog("Editar Tarefa:", descricao);
-                if (novaDescricao != null && !novaDescricao.trim().isEmpty()) {
-                    label.setText(novaDescricao);
-                }
+                abrirJanelaEdicao(titulo, descricao, status, false, tituloLabel, descricaoLabel, statusLabel);
             }
         });
 
@@ -111,55 +127,82 @@ public class TarefaGUI {
         tarefas.add(panel);
     }
 
+    // Método para abrir uma janela de edição/criação com layout semelhante à imagem fornecida
+    private void abrirJanelaEdicao(String titulo, String descricao, String status, boolean isNovaTarefa,
+                                   JLabel tituloLabel, JLabel descricaoLabel, JLabel statusLabel) {
+        JDialog dialog = new JDialog(frame, isNovaTarefa ? "Criar Tarefa" : "Editar Tarefa", true);
+        dialog.setSize(400, 300);
+        dialog.setLayout(null);
+
+        // Título
+        JLabel tituloTextoLabel = new JLabel("Título:");
+        tituloTextoLabel.setBounds(10, 10, 100, 25);
+        dialog.add(tituloTextoLabel);
+
+        JTextField tituloField = new JTextField(titulo);
+        tituloField.setBounds(120, 10, 250, 25);
+        dialog.add(tituloField);
+
+        // Descrição
+        JLabel descricaoTextoLabel = new JLabel("Descrição:");
+        descricaoTextoLabel.setBounds(10, 50, 100, 25);
+        dialog.add(descricaoTextoLabel);
+
+        JTextField descricaoField = new JTextField(descricao);
+        descricaoField.setBounds(120, 50, 250, 25);
+        dialog.add(descricaoField);
+
+        // Status
+        JLabel statusTextoLabel = new JLabel("Status:");
+        statusTextoLabel.setBounds(10, 90, 100, 25);
+        dialog.add(statusTextoLabel);
+
+        String[] statusOptions = {"Não iniciado", "Em andamento", "Concluído"};
+        JComboBox<String> statusComboBox = new JComboBox<>(statusOptions);
+        statusComboBox.setBounds(120, 90, 250, 25);
+        statusComboBox.setSelectedItem(status);
+        dialog.add(statusComboBox);
+
+        // Botão de salvar
+        JButton salvarButton = new JButton("Salvar");
+        salvarButton.setBounds(100, 150, 80, 25);
+        salvarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String novoTitulo = tituloField.getText();
+                String novaDescricao = descricaoField.getText();
+                String novoStatus = (String) statusComboBox.getSelectedItem();
+
+                if (isNovaTarefa) {
+                    // Adiciona nova tarefa à interface principal
+                    adicionarTarefa(novoTitulo, novaDescricao, novoStatus);
+                } else if (tituloLabel != null && descricaoLabel != null && statusLabel != null) {
+                    // Atualiza a tarefa existente
+                    tituloLabel.setText(novoTitulo);
+                    descricaoLabel.setText(novaDescricao);
+                    statusLabel.setText(novoStatus);
+                }
+                dialog.dispose();
+            }
+        });
+        dialog.add(salvarButton);
+
+        // Botão de cancelar
+        JButton cancelarButton = new JButton("Cancelar");
+        cancelarButton.setBounds(200, 150, 100, 25);
+        cancelarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dialog.dispose();
+            }
+        });
+        dialog.add(cancelarButton);
+
+        dialog.setLocationRelativeTo(frame);
+        dialog.setVisible(true);
+    }
+
     public static void main(String[] args) {
         new TarefaGUI();
     }
-
-
-
-
-
-    private static void placeComponents(JPanel panel) {
-        panel.setLayout(null);
-
-        // Titulo
-        JLabel userLabel = new JLabel("Tarefa 1°");
-        userLabel.setBounds(150, 25, 150, 25);
-        panel.add(userLabel);
-
-        // Criação do campo de texto
-        JTextField userText = new JTextField(20);
-        userText.setBounds(200, 20, 100, 25);
-        panel.add(userText);
-
-        // Criação do botão
-        JButton make_task = new JButton("Criar Tarefa");
-        make_task.setBounds(10, 20, 150, 25);
-        panel.add(make_task);
-
-        // Criação do botão
-        JButton view_task = new JButton("Criar Tarefa");
-        view_task.setBounds(20, 50, 350, 50);
-        panel.add(view_task);
-
-        // Adicionando ação ao botão
-        make_task.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                userText.getText();
-            }
-        });
-
-        view_task.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                userText.getText();
-            }
-        });
-
-    }
 }
-
-
-
-
