@@ -30,6 +30,6 @@ public class Notify {
         trayIcon.setToolTip("System tray icon demo");
         tray.add(trayIcon);
 
-        trayIcon.displayMessage("Atenção", "Eduardo Tecelao", MessageType.INFO);
+        trayIcon.displayMessage("Atenção", "Eduardo acorde e vá para o summit", MessageType.INFO);
     }
 }
