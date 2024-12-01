@@ -38,9 +38,6 @@ TarefaApp/
 │   ├── Tarefa.java        # Classe que representa a tarefa (com data, descrição, etc.)
 │   ├── TarefaDAO.java     # Classe para gerenciar a persistência de tarefas (opcional)
 │   └── Notificacao.java   # Classe para lidar com o envio das notificações
-│
-├── resources/             # Arquivos de configuração e imagens (se necessário)
-│
 └── lib/                   # Bibliotecas externas
 ```
 

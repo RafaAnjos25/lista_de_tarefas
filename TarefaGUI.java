@@ -85,9 +85,9 @@ public class TarefaGUI {
         panel.add(contentPanel, BorderLayout.CENTER);
 
         // Botão de editar
-        JButton editarButton = new JButton("✎");
+        JButton editarButton = new JButton("Editar");
         editarButton.setForeground(Color.BLUE);
-        editarButton.setPreferredSize(new Dimension(50, 30)); // Ajusta o tamanho do botão editar
+        editarButton.setPreferredSize(new Dimension(80, 80)); // Ajusta o tamanho do botão editar
         editarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -98,7 +98,7 @@ public class TarefaGUI {
         // Botão de excluir
         JButton excluirButton = new JButton("X");
         excluirButton.setForeground(Color.RED);
-        excluirButton.setPreferredSize(new Dimension(50, 30)); // Ajusta o tamanho do botão excluir
+        excluirButton.setPreferredSize(new Dimension(80, 80)); // Ajusta o tamanho do botão excluir
         excluirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
