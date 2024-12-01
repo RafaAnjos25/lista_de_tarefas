@@ -35,13 +35,12 @@ Este é um projeto de uma aplicação em Java desenvolvida para gerenciar tarefa
 **Estrutura do Projeto**
 
 ```
-TarefaApp/
-├── src/
-│   ├── Main.java          # Classe principal com a execução do programa
-│   ├── Tarefa.java        # Classe que representa a tarefa (com data, descrição, etc.)
-│   ├── TarefaDAO.java     # Classe para gerenciar a persistência de tarefas (opcional)
-│   └── Notificacao.java   # Classe para lidar com o envio das notificações
-└── lib/                   # Bibliotecas externas
+LISTA_DE_TAREFAS/
+├──imgs/
+|  └──image.png
+|
+├──RoundedPanel.java
+└──TarefaGUI.java
 ```
 
 ## Como Executar o Programa
@@ -70,6 +69,4 @@ java TarefaGUI
 ```
 
 ![Alt Text](img\java-ezgif.com-crop.gif)
-
-## Prototipo
 
