@@ -1,5 +1,7 @@
 # Lista de Tarefas com Notificações
 
+![Prototipo](/img/image.png)
+
 Este é um projeto de uma aplicação em Java desenvolvida para gerenciar tarefas do dia a dia, com funcionalidades que permitem a criação, edição e remoção de tarefas, além de notificações para lembrar o usuário sobre as tarefas pendentes
 
 **Funcionalidades**
@@ -30,7 +32,8 @@ Este é um projeto de uma aplicação em Java desenvolvida para gerenciar tarefa
 + Date and Time API (java.time)
  Para manipulação de datas e horas de forma eficiente e segura.
 
-**Estrutura do Projeto**a
+**Estrutura do Projeto**
+
 ```
 TarefaApp/
 ├── src/
@@ -41,18 +44,32 @@ TarefaApp/
 └── lib/                   # Bibliotecas externas
 ```
 
-Como Executar o Programa
-Pré-requisitos:
+## Como Executar o Programa
+
+**Pré-requisitos:**
 
 Instalar o Java JDK (Recomendado: JDK 8 ou superior).
 Compilação e Execução:
 
-Baixar ou clonar o repositório.
+**Baixar ou clonar o repositório.**
 
 ```
 git clone https://github.com/RafaAnjos25/lista_de_tarefas.git
 ```
 
+**Compilar o arquivo TarefaGUI.java com o comando**
+
+```
+javac TarefaGUI.java
+```
+
+**Executar o Programa**
+
+```
+java TarefaGUI
+```
+
+![Alt Text](img\java-ezgif.com-crop.gif)
+
 ## Prototipo
 
-![Prototipo](/img/img.png)
