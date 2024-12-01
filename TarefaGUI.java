@@ -32,7 +32,7 @@ public class TarefaGUI {
         criarTarefaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                abrirJanelaEdicao("Nova Tarefa", "", "Não iniciado", true, null, null, null);
+                abrirJanelaEdicao("Nova Tarefa", "", "Nao iniciado", true, null, null, null);
             }
         });
 
@@ -135,7 +135,7 @@ public class TarefaGUI {
         dialog.setLayout(null);
 
         // Título
-        JLabel tituloTextoLabel = new JLabel("Título:");
+        JLabel tituloTextoLabel = new JLabel("Titulo:");
         tituloTextoLabel.setBounds(10, 10, 100, 25);
         dialog.add(tituloTextoLabel);
 
@@ -144,7 +144,7 @@ public class TarefaGUI {
         dialog.add(tituloField);
 
         // Descrição
-        JLabel descricaoTextoLabel = new JLabel("Descrição:");
+        JLabel descricaoTextoLabel = new JLabel("Descricao:");
         descricaoTextoLabel.setBounds(10, 50, 100, 25);
         dialog.add(descricaoTextoLabel);
 
@@ -157,7 +157,7 @@ public class TarefaGUI {
         statusTextoLabel.setBounds(10, 90, 100, 25);
         dialog.add(statusTextoLabel);
 
-        String[] statusOptions = {"Não iniciado", "Em andamento", "Concluído"};
+        String[] statusOptions = {"Nao iniciado", "Em andamento", "Concluido"};
         JComboBox<String> statusComboBox = new JComboBox<>(statusOptions);
         statusComboBox.setBounds(120, 90, 250, 25);
         statusComboBox.setSelectedItem(status);
